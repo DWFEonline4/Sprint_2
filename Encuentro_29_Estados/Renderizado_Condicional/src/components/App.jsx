@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "../css/App.css";
 
@@ -11,11 +11,14 @@ export default function App() {
 }
 
 function Bulbs() {
+  const [on, click] = useState(false);
+  let clickOn = ()=>{click(true)}
+  let clickOff = ()=>{click(false)}
   return (
     <>
-      <div className={"bulb-on"} />
-      <button>On</button>
-      <button>Off</button>
+      <div className={on?"bulb-on":"bulb-off"} />
+      <button onClick={clickOn}>On</button>
+      <button onClick={clickOff}>Off</button>
     </>
   );
 }

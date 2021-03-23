@@ -1,25 +1,28 @@
 import React from "react";
-import "../css/App.css";
-import Album from "./Album"
-import { albumes } from "../data/albumes.js";
 
-export default function App() {
+import "../css/App.css";
+
+const App = () => {
   return (
     <div>
-      {albumes.map((album) => {
-        return (
-          <Album
-            key={album.id}
-            artista={album.artista}
-            titulo={album.titulo}
-            fecha={album.lanzamiento}
-            portada={album.portada}
-            genero={album.genero}
-            agrupacion={album.agrupacion}
-          />
-        );
-      })}
+      <Contador />
     </div>
+  );
+};
+
+function Contador(props) {
+  return (
+    <main className="Application">
+      <section className="Counters">
+        <div className="Counter">
+          <p className="count">0</p>
+          <section className="controls">
+            <button>Incrementar</button>
+          </section>
+        </div>
+      </section>
+    </main>
   );
 }
 
+export default App;
