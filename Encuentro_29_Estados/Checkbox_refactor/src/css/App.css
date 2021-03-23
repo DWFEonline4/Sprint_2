@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App, label {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+label, input[type="checkbox"]{
+  cursor: pointer;
+}
+
+input[type="checkbox"]{
+  margin-left: 5px;
+}
