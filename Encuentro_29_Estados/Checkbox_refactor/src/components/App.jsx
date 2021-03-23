@@ -13,18 +13,21 @@ function Checkbox() {
   let infoEstado = useState(false);
   console.log(infoEstado);
 
-  let valorActual = infoEstado[0];
-  let actualizarEstado = infoEstado[1];
+  /*let valorActual = infoEstado[0];
+  let actualizarEstado = infoEstado[1];*/
+
+  let [valorActual, actualizarEstado] = infoEstado;
 
   console.log("el valor actual es: " + valorActual);
 
   const manejarCambio = (event) => {
     console.log("se disparo el evento onChange...");
-    if (valorActual === true) {
+    /*if (valorActual === true) {
       actualizarEstado(false);
     } else {
       actualizarEstado(true);
-    }
+    }*/
+    actualizarEstado(!valorActual);
   };
 
   return (
