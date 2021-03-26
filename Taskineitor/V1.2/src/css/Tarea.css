@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.task{
+    width: 374px;
+    height: 158px;
+    border-radius: 12px;
+    background-color: #4044C9;
+    display: flex;
+    padding: 30px;
+    margin: 10px;
+}
+
+.task span{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    display: block;
+}
+.task .titulo{
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFF;
+}
+.task .fecha{
+    color: #FEE504;
+    font-size: 14px;
+}
+.task .cat_desc{
+    color:#FFFFFF;
+    font-size: 12px;
+}
+.task .categoria{
+    background: #F677AD;
+    border-radius: 22px;
+    color: #FFF;
+    display: inline-block;
+    padding: 3px 13px;
+    font-size: 14px;
+}
+
+.task img{
+    width: 28px;
+    height: 30px;
+    max-width: 100%;
+    filter: invert(100%);
+}
+
+.task .left{
+    width: 85%;
+}
+.task .right{
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;  
+}
+
+.task .right>input[type="checkbox"]{
+    width: 26px;
+    height: 26px;
+}
