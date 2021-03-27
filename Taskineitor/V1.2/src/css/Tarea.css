@@ -57,3 +57,10 @@
     width: 26px;
     height: 26px;
 }
+
+.task .fecha_dias, .task .fecha{
+    display: inline-block;
+}
+.task .fecha_dias{
+    font-style: italic;
+}

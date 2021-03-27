@@ -4,7 +4,7 @@ export default function Tarea(props) {
     <div className="task">
       <div className="left">
         <span className="titulo">{props.titulo}</span>
-        <span className="fecha">{calcularFecha(props.fechaCreada)}</span>
+        <span className="fecha">{props.fechaCreada}</span><span className="fecha fecha_dias">{calcularFecha(props.fechaCreada.split('/'))}</span>
         <span className="cat_desc">Categoria:</span>
         <span className="categoria">{props.categoria}</span>
       </div>
@@ -24,10 +24,9 @@ function checkBox(complet){
 }
 
 function calcularFecha(date){
-  const fecha = new Date(date);
+  const fecha = new Date(date[2], date[1], date[0])
   const hoy = new Date();
-  if(fecha < hoy)//Validar las fechas
-    return `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()} - Hace ${(hoy-fecha)} días`;
-  else
-  return `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()} - Hoy`;
+  let diferencia = hoy.getTime() - fecha.getTime();
+  let diferenciaDias = Math.floor(diferencia / (1000 * 3600 * 24));
+  return diferenciaDias>0?` - Hace ${diferenciaDias} días`:' - Hoy';
 }
