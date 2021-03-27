@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/App.css";
-import Album from "./Album"
+import Album from "./Album";
+import Select from "./Select";
 import { albumes } from "../data/albumes.js";
 
 export default function App() {
+  const [albunesFilter, filtrar] = useState(albumes);
+  const filter = (filtro, prop)=>{
+    filtro!==""?
+      filtrar(albumes.filter((item)=>item[prop]===filtro)):
+      filtrar(albumes);
+  }
   return (
     <div>
-      {albumes.map((album) => {
-        return (
+      <Select key={"select-genero"} click={filter} tipo={"genero"} albumes={albumes}/>
+      {albunesFilter.map((album) => {
+        return (         
           <Album
             key={album.id}
             artista={album.artista}
@@ -22,4 +30,3 @@ export default function App() {
     </div>
   );
 }
-
