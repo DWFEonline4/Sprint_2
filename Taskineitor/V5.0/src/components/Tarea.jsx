@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../css/Tarea.css';
 
 export default function Tarea(props) {
