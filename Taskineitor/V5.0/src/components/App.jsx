@@ -1,15 +1,31 @@
+import React, { useState } from 'react';
 import '../css/App.css';
 import Tarea from './Tarea';
 import {tareas} from '../data/tareas.js'
-import { useState } from 'react';
+
 export default function App() {
-  const[tareasFiltradas, cambiarTareas]=useState(tareas);
+  const[listaTareas, cambiarTareas]=useState(tareas);
   const[categoria, cambiarCategoria]=useState("");
+  
   let clickCategoria=(e)=>{
-    const cat = e.target.value;
-    cambiarCategoria(cat);
-    cambiarTareas(cat===""?tareas:tareas.filter(tarea=>tarea.categoria===cat));
+    const categoria = e.target.value;
+    cambiarCategoria(categoria);
   }
+
+  let tareasFiltradas = ()=>{
+    return categoria===""?listaTareas:listaTareas.filter(t=>t.categoria===categoria);
+  }
+
+  let cambiarCompletada = (tarea) => {
+    const listaActualizada = listaTareas.map(t=>{
+      if(t.id===tarea.id)
+        return {...t, completada: !tarea.completada};
+      else
+        return t;
+    });
+    cambiarTareas(listaActualizada);
+  }
+  
   return (
     <div className="AppTaskineitor">
       <select onChange={clickCategoria} value={categoria}>
@@ -18,7 +34,7 @@ export default function App() {
         <option value="salud">Salud</option>
         <option value="estudio">Estudio</option>
       </select>
-      {tareasFiltradas.map(
+      {tareasFiltradas().map(
         tarea=>{
           return(
             <Tarea 
@@ -27,6 +43,7 @@ export default function App() {
               completada={tarea.completada}
               fechaCreada={tarea.fechaCreada}
               categoria={tarea.categoria}
+              clickCompletada={()=>cambiarCompletada(tarea)}
             />
           );
         }
